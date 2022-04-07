@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "ele-sample": "apps/ele-sample",
-    "ele-sample-e2e": "apps/ele-sample-e2e"
+    "ele-sample-e2e": "apps/ele-sample-e2e",
+    "electron": "libs/electron",
+    "shared": "libs/shared"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/electron",
+  "sourceRoot": "libs/electron/src",
+  "prefix": "nx-ng-electron-sample",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/electron"],
+      "options": {
+        "project": "libs/electron/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/electron/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/electron/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/electron"],
+      "options": {
+        "jestConfig": "libs/electron/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/electron/src/**/*.ts",
+          "libs/electron/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
