@@ -1,0 +1,28 @@
+{
+  "root": "apps/ele-sample-e2e",
+  "sourceRoot": "apps/ele-sample-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/ele-sample-e2e/cypress.json",
+        "devServerTarget": "ele-sample:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ele-sample:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ele-sample-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["ele-sample"]
+}
