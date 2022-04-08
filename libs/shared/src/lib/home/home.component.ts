@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nx-ng-electron-sample-home',
-  template: ` <p>home works!</p> `,
+  template: ` <p>Sudo home works!</p> `,
   styles: [],
 })
 export class HomeComponent implements OnInit {
