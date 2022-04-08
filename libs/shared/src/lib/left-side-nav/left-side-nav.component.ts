@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nx-ng-electron-sample-left-side-nav',
-  template: ` <p nav>left-side-nav works!</p> `,
+  template: ` <p>This is the super left side navigation menu</p> `,
   styles: [],
 })
 export class LeftSideNavComponent implements OnInit {

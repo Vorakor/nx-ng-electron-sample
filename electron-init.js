@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
+// const path = require('path');
 const url = require('url');
 
 let mainWindow;
@@ -15,11 +15,11 @@ const createWindow = () => {
     });
     mainWindow.loadURL(
       url.format({
-        // One approach is to point electron at index.html (prod builds?)
+        // One approach is to point electron at index.html (prod builds)
         // For this approach it is better to have the electron initialization file in the root of the repo.
         // pathname: path.join(__dirname, '/dist/apps/ele-sample/index.html'),
         // protocol: 'file:',
-        // Another approach is to point electron at localhost:4200 (dev builds?)
+        // Another approach is to point electron at localhost:4200 (dev builds)
         pathname: 'localhost:4200',
         protocol: 'http:',
         slashes: true,
