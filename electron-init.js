@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-// const path = require('path');
+const path = require('path');
 const url = require('url');
 
 let mainWindow;
@@ -25,6 +25,10 @@ const createWindow = () => {
         slashes: true,
       })
     );
+    // Another option for loading the web-based app in the background
+    // mainWindow.loadFile(
+    //   path.join(__dirname, '/dist/apps/ele-sample/index.html')
+    // );
     mainWindow.webContents.openDevTools();
     mainWindow.on('closed', () => {
       mainWindow = null;
@@ -35,7 +39,7 @@ const createWindow = () => {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
-  app.quit();
+  if (process.platform !== 'darwin') app.quit();
 });
 
 app.on('activate', () => {
@@ -43,3 +47,11 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+// app.whenReady().then(() => {
+//   createWindow();
+
+//   app.on('activate', () => {
+//     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+//   });
+// });
