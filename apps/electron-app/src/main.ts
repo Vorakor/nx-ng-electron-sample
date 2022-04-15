@@ -3,23 +3,25 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import 'reflect-metadata';
 import { ReflectiveInjector } from '@cricut/core-logic';
+import { homedir } from 'os';
+import { join } from 'path';
+
+let mainWindow: Electron.BrowserWindow | null;
 
 export function electronMain(): void {
-  let mainWindow: Electron.BrowserWindow | null;
-
   const createWindow = () => {
     setTimeout(() => {
       mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
-        webPreferences: {
-          nodeIntegration: true,
-        },
+        // webPreferences: {
+        //   preload: './preload.js',
+        // },
       });
       mainWindow.loadURL('http://localhost:4200');
       // Another option for loading the web-based app in the background
       // mainWindow.loadFile(
-      //   '/dist/apps/ele-sample/index.html'
+      //   join(homedir(), 'dist/apps/ele-sample/index.html')
       // );
       mainWindow.webContents.openDevTools();
       mainWindow.on('closed', () => {

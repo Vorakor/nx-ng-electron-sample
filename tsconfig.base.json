@@ -16,8 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@vorakortech/ele-sample-shared": ["libs/shared/src/index.ts"],
-      "@vorakortech/electron": ["libs/electron/src/index.ts"],
-      "@vorakortech/electron-main": ["libs/electron-main/src/index.ts"]
+      "@vorakortech/electron": ["libs/electron/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

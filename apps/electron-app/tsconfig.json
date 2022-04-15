@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "outDir": "../../dist/apps/electron-app",
     "target": "es2017",
     "module": "esnext",
     "moduleResolution": "node",

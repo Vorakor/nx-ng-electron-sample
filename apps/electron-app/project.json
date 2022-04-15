@@ -10,7 +10,8 @@
         "outputPath": "dist/apps/electron-app",
         "main": "apps/electron-app/src/main.ts",
         "tsConfig": "apps/electron-app/tsconfig.app.json",
-        "assets": ["apps/electron-app/src/assets"]
+        "assets": ["apps/electron-app/src/assets"],
+        "webpackConfig": ["apps/electron-app/webpack.config.js"]
       },
       "configurations": {
         "production": {

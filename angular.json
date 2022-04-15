@@ -5,7 +5,6 @@
     "ele-sample-e2e": "apps/ele-sample-e2e",
     "electron": "libs/electron",
     "electron-app": "apps/electron-app",
-    "electron-main": "libs/electron-main",
     "shared": "libs/shared"
   }
 }
