@@ -1,47 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { app, BrowserWindow, ipcMain } from 'electron';
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import 'reflect-metadata';
-import { ReflectiveInjector } from '@cricut/core-logic';
-import { homedir } from 'os';
-import { join } from 'path';
-
-let mainWindow: Electron.BrowserWindow | null;
-
-export function electronMain(): void {
-  const createWindow = () => {
-    setTimeout(() => {
-      mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 720,
-        // webPreferences: {
-        //   preload: './preload.js',
-        // },
-      });
-      mainWindow.loadURL('http://localhost:4200');
-      // Another option for loading the web-based app in the background
-      // mainWindow.loadFile(
-      //   join(homedir(), 'dist/apps/ele-sample/index.html')
-      // );
-      mainWindow.webContents.openDevTools();
-      mainWindow.on('closed', () => {
-        mainWindow = null;
-      });
-    }, 10000);
-  };
-
-  app.on('ready', createWindow);
-
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit();
-  });
-
-  app.on('activate', () => {
-    if (mainWindow === null) {
-      createWindow();
-    }
-  });
-}
+import { ipcMain } from 'electron';
+import { ReflectiveInjector } from './reflective-injector';
+import { createWindow } from '../electron-main';
 
 type ServerCallback = (...args: any[]) => any;
 
@@ -53,10 +14,6 @@ interface IClientChannel {
 }
 
 const ICLIENTCHANNEL = new InjectionToken<IClientChannel>('iclientchannel');
-
-interface ISender {
-  send(channel: string, ...args: any[]): void;
-}
 
 @Injectable()
 class ElectronClientChannel implements IClientChannel {
@@ -78,14 +35,6 @@ class ElectronClientChannel implements IClientChannel {
   }
 }
 
-class ElectronWebContentsSender implements ISender {
-  constructor(private _webContents: Electron.WebContents) {}
-
-  public send(channel: string, ...args: any[]): void {
-    this._webContents.send(channel, ...args);
-  }
-}
-
 @Injectable()
 class EchoPlugin {
   constructor(
@@ -103,3 +52,5 @@ class EchoPlugin {
 ReflectiveInjector.resolveWith(ICLIENTCHANNEL, ElectronClientChannel);
 ReflectiveInjector.resolveAndCreate([EchoPlugin]);
 ReflectiveInjector.get(EchoPlugin);
+
+createWindow();

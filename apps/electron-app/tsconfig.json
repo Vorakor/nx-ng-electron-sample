@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "../../dist/apps/electron-app",
-    "target": "es2017",
-    "module": "esnext",
+    "target": "ES2018",
+    "module": "CommonJS",
+    "lib": ["dom", "ESNext"],
     "moduleResolution": "node",
     "strict": true,
     "emitDecoratorMetadata": true,
@@ -11,6 +12,8 @@
     "importHelpers": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "noImplicitAny": false
   }
 }

@@ -8,6 +8,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/electron-app",
+        "index": "apps/electron-app/src/index.html",
         "main": "apps/electron-app/src/main.ts",
         "tsConfig": "apps/electron-app/tsconfig.app.json",
         "assets": ["apps/electron-app/src/assets"],
